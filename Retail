@@ -1,0 +1,49 @@
+// Almazan Dhen Kerby V
+// CC2 B
+// Retail Store Inventory
+
+
+import java.util.Scanner;
+
+public class RetailStoreInventory {
+
+    public static void main(String[] args) {
+        // Array to store stock levels of 10 products
+        int[] stockQuantities = {50, 30, 100, 70, 45, 120, 80, 60, 90, 200};
+        
+        // Array to store prices of the corresponding products
+        double[] productPrices = {19.99, 5.49, 12.89, 3.99, 15.49, 9.99, 25.99, 2.49, 7.99, 1.49};
+        
+        // Variable to hold the total value of the stock
+        double totalStockValue = 0;
+        
+        // Loop through each product to calculate total value
+        for (int i = 0; i < stockQuantities.length; i++) {
+            totalStockValue += stockQuantities[i] * productPrices[i];
+        }
+        
+        // Output the total stock value
+        System.out.printf("The total value of all products in stock is: $%.2f%n", totalStockValue);
+        
+        // Optionally, ask the user if they want to update stock or prices
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Do you want to update stock levels? (yes/no): ");
+        String response = scanner.nextLine();
+        
+        if (response.equalsIgnoreCase("yes")) {
+            // Example of how you could update stock levels (optional)
+            System.out.print("Enter new stock level for product 1: ");
+            stockQuantities[0] = scanner.nextInt();  // Update stock for product 1
+            
+            // Recalculate total stock value after the update
+            totalStockValue = 0;  // Reset the total value
+            for (int i = 0; i < stockQuantities.length; i++) {
+                totalStockValue += stockQuantities[i] * productPrices[i];
+            }
+            
+            System.out.printf("Updated total value of all products in stock is: $%.2f%n", totalStockValue);
+        }
+        
+        scanner.close();  // Close the scanner to avoid resource leaks
+    }
+}
